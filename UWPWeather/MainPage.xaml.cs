@@ -31,7 +31,8 @@ namespace UWPWeather
 
         private async void Button_Click_Async(object sender, RoutedEventArgs e)
         {
-            WeatherModel myWeather = await OpenWeatherMapProxy.GetWeatherAsync(20.0, 30.0);
+            var position = await LocationManager.GetPositionAsync();
+            WeatherModel myWeather = await OpenWeatherMapProxy.GetWeatherAsync(position.Coordinate.Point.Position.Latitude, position.Coordinate.Point.Position.Longitude);
             ResultTextBlock.Text = $"{myWeather.Name} - {(int)myWeather.Main.Temp} - {myWeather.Weather[0].Description}";
             ResultImage.Source = new BitmapImage(new Uri(String.Format($"ms-appx:///Assets/Weather/{myWeather.Weather[0].Icon}.png")));
         }

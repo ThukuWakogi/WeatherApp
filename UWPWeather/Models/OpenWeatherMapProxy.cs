@@ -13,7 +13,8 @@ namespace UWPWeather.Models
         public async static Task<WeatherModel> GetWeatherAsync(double lat, double lon)
         {
             var http = new HttpClient();
-            var response = await http.GetAsync(String.Format("http://api.openweathermap.org/data/2.5/weather?lat=1.24&lon=36.67&APPID=5f3c1b2ba02841edc930859b028fe9a8&units=imperial"));
+            var url = String.Format($"http://api.openweathermap.org/data/2.5/weather?lat={lat.ToString()}&lon={lon.ToString()}&APPID=5f3c1b2ba02841edc930859b028fe9a8&units=imperial");
+            var response = await http.GetAsync(url);
             var result = await response.Content.ReadAsStringAsync();
             //var serializer = new DataContractJsonSerializer(typeof(WeatherModel));
             //var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));

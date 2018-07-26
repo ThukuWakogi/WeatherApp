@@ -101,6 +101,7 @@
     <Compile Include="Models\Clouds.cs" />
     <Compile Include="Models\Converter.cs" />
     <Compile Include="Models\Coord.cs" />
+    <Compile Include="Models\LocationManager.cs" />
     <Compile Include="Models\Main.cs" />
     <Compile Include="Models\OpenWeatherMapProxy.cs" />
     <Compile Include="Models\Rain.cs" />
