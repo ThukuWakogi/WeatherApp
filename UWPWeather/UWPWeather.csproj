@@ -98,6 +98,18 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Clouds.cs" />
+    <Compile Include="Models\Converter.cs" />
+    <Compile Include="Models\Coord.cs" />
+    <Compile Include="Models\Main.cs" />
+    <Compile Include="Models\OpenWeatherMapProxy.cs" />
+    <Compile Include="Models\Rain.cs" />
+    <Compile Include="Models\Root.cs" />
+    <Compile Include="Models\Serialize.cs" />
+    <Compile Include="Models\Sys.cs" />
+    <Compile Include="Models\Weather.cs" />
+    <Compile Include="Models\WeatherModel.cs" />
+    <Compile Include="Models\Wind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -127,8 +139,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Net.Http">
+      <Version>2.2.29</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
