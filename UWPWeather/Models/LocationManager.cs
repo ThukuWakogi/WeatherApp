@@ -11,13 +11,9 @@ namespace UWPWeather.Models
     {
         public async static Task<Geoposition> GetPositionAsync()
         {
-            var accessStatus = await Geolocator.RequestAccessAsync();
-
-            if (accessStatus != GeolocationAccessStatus.Allowed) throw new Exception();
-
-            var geolocator = new Geolocator { DesiredAccuracyInMeters = 0 };
-            var position = await geolocator.GetGeopositionAsync();
-            return position;
+            if (await Geolocator.RequestAccessAsync() != GeolocationAccessStatus.Allowed) throw new Exception();
+            
+            return await new Geolocator { DesiredAccuracyInMeters = 0 }.GetGeopositionAsync();
         }
     }
 }
