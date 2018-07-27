@@ -6,11 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded_Async">
 
-    <StackPanel Background="HotPink">
-        <Button Content="Get Weather" Click="Button_Click_Async"/>
-        <TextBlock Name="ResultTextBlock"/>
-        <Image Name="ResultImage" Width="200" Height="200"/>
-    </StackPanel>
+    <RelativePanel Background="HotPink" >
+        <StackPanel HorizontalAlignment="Center" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignHorizontalCenterWithPanel="True">
+            <Image Name="ResultImage" Width="200" Height="200" HorizontalAlignment="Center"/>
+            <TextBlock Name="TempTextBlock" FontSize="52" HorizontalAlignment="Center"/>
+            <TextBlock Name="DescriptionTextBlock" FontSize="36" HorizontalAlignment="Center"/>
+            <TextBlock Name="LocationTextBlock" FontSize="24" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"/>
+        </StackPanel>
+    </RelativePanel>
 </Page>

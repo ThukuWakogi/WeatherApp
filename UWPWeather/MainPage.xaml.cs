@@ -29,12 +29,20 @@ namespace UWPWeather
             this.InitializeComponent();
         }
 
-        private async void Button_Click_Async(object sender, RoutedEventArgs e)
+        private async void Page_Loaded_Async(object sender, RoutedEventArgs e)
         {
-            var position = await LocationManager.GetPositionAsync();
-            WeatherModel myWeather = await OpenWeatherMapProxy.GetWeatherAsync(position.Coordinate.Point.Position.Latitude, position.Coordinate.Point.Position.Longitude);
-            ResultTextBlock.Text = $"{myWeather.Name} - {(int)myWeather.Main.Temp} - {myWeather.Weather[0].Description}";
-            ResultImage.Source = new BitmapImage(new Uri(String.Format($"ms-appx:///Assets/Weather/{myWeather.Weather[0].Icon}.png")));
+            try
+            {
+                var position = await LocationManager.GetPositionAsync();
+                WeatherModel myWeather = await OpenWeatherMapProxy.GetWeatherAsync(position.Coordinate.Point.Position.Latitude, position.Coordinate.Point.Position.Longitude);
+                ResultImage.Source = new BitmapImage(new Uri(String.Format($"ms-appx:///Assets/Weather/{myWeather.Weather[0].Icon}.png")));
+                TempTextBlock.Text = ((int)myWeather.Main.Temp).ToString();
+                DescriptionTextBlock.Text = myWeather.Weather[0].Description;
+                LocationTextBlock.Text = myWeather.Name;
+            } catch
+            {
+                LocationTextBlock.Text = "Unable to get weather at this time";
+            }
         }
     }
 }
